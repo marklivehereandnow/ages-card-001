@@ -80,6 +80,9 @@ public class Card implements Serializable {
     private int tokenBlue;
 
     public Card() {
+        this.id = 1000;
+        this.name = "NOCARD";
+        this.tag="";
     }
 
     public Card(Integer id) {
@@ -99,6 +102,7 @@ public class Card implements Serializable {
         this.cnt = cnt;
     }
 
+    
     public Card(Integer id, String action, String iconPoints, int cnt, int tokenWhite, int tokenRed, int tokenYellow, int tokenBlue) {
         this.id = id;
         this.action = action;
@@ -222,6 +226,24 @@ public class Card implements Serializable {
         this.tokenBlue = tokenBlue;
     }
 
+    public Card copy(){
+        Card card=new Card();
+        card.action=this.action;
+        card.age=this.age;
+        card.civilMilitary=this.civilMilitary;
+        card.color=this.color;
+        card.cost=this.cost;
+        card.iconPoints=this.iconPoints;
+        card.id=this.id;
+        card.name=this.name;
+        card.tag=this.tag;
+        
+        
+        
+        
+        return card;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -247,5 +269,22 @@ public class Card implements Serializable {
         return "Card{" + "id=" + id + ", name=" + name + ", age=" + age + ", civilMilitary=" + civilMilitary + ", tag=" + tag + ", action=" + action + ", iconPoints=" + iconPoints + ", cost=" + cost + ", color=" + color + ", cnt=" + cnt + ", tokenWhite=" + tokenWhite + ", tokenRed=" + tokenRed + ", tokenYellow=" + tokenYellow + ", tokenBlue=" + tokenBlue + '}';
     }
 
- 
+    public String toString(int style){
+         String[] ageStr = {"A", "I", "II", "III","-"};
+       
+        switch(style){
+            case 1:// for CardNow
+                         StringBuilder sb = new StringBuilder();
+                    sb.append("[");
+                    sb.append(ageStr[age]);
+                    sb.append("");
+                    sb.append(name);
+                    sb.append("-");
+                    sb.append(tag);
+                    sb.append("] ");
+                return sb.toString();
+            default:
+                return toString();
+        }
+    }
 }

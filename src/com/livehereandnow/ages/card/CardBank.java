@@ -19,8 +19,8 @@ public class CardBank {
 
     private CardBank() {
         allCards = new CardArray("AllCards");
-        
-          allCards.add(new Card(1002, "亞歷山大圖書館", 0, "內政", "奇蹟", "你可以額外保留一張內政牌一張軍事牌", "", "1;2;2;1", "紫色", 1));
+
+        allCards.add(new Card(1002, "亞歷山大圖書館", 0, "內政", "奇蹟", "你可以額外保留一張內政牌一張軍事牌", "", "1;2;2;1", "紫色", 1));
         allCards.add(new Card(1015, "巨人像", 0, "內政", "奇蹟", "殖民時獲得獎勵+1", "", "3;3", "紫色", 1));
         allCards.add(new Card(1026, "空中花園", 0, "內政", "奇蹟", "", "", "2;2;2", "紫色", 1));
         allCards.add(new Card(1031, "金字塔", 0, "內政", "奇蹟", "", "", "3;2;1", "紫色", 1));
