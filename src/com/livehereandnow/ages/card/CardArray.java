@@ -33,6 +33,15 @@ public class CardArray extends ArrayList<Card> {
         return title + " " + toString();
     }
 
+    /**
+     * 生產
+     */
+    public void produce(){
+         for (int k = 0; k < size(); k++) {
+            get(k).produce();
+        }
+    }
+    
     public Card getCardByName(String str) {
         //   List<Card> list=new ArrayList<>();
         for (int k = 0; k < size(); k++) {

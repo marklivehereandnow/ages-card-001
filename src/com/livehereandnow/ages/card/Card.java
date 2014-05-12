@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.livehereandnow.ages.card;
 
 import java.io.Serializable;
@@ -40,6 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Card.findByTokenYellow", query = "SELECT c FROM Card c WHERE c.tokenYellow = :tokenYellow"),
     @NamedQuery(name = "Card.findByTokenBlue", query = "SELECT c FROM Card c WHERE c.tokenBlue = :tokenBlue")})
 public class Card implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -82,7 +82,7 @@ public class Card implements Serializable {
     public Card() {
         this.id = 1000;
         this.name = "NOCARD";
-        this.tag="";
+        this.tag = "";
     }
 
     public Card(Integer id) {
@@ -102,7 +102,6 @@ public class Card implements Serializable {
         this.cnt = cnt;
     }
 
-    
     public Card(Integer id, String action, String iconPoints, int cnt, int tokenWhite, int tokenRed, int tokenYellow, int tokenBlue) {
         this.id = id;
         this.action = action;
@@ -198,6 +197,17 @@ public class Card implements Serializable {
         return tokenWhite;
     }
 
+//[14:07:10] maxchen20041: 作一個方法
+//[14:07:31] maxchen20041: 叫做生產
+//[14:07:55] maxchen20041: 讓tokenBlue=tokenBlue+tokenYellow
+    /**
+     *
+     * [14:07:10] maxchen20041: 作一個方法, 叫做生產, 讓tokenBlue=tokenBlue+tokenYellow
+     */
+    public void produce() {
+        tokenBlue += tokenYellow;
+    }
+
     public void setTokenWhite(int tokenWhite) {
         this.tokenWhite = tokenWhite;
     }
@@ -226,24 +236,21 @@ public class Card implements Serializable {
         this.tokenBlue = tokenBlue;
     }
 
-    public Card copy(){
-        Card card=new Card();
-        card.action=this.action;
-        card.age=this.age;
-        card.civilMilitary=this.civilMilitary;
-        card.color=this.color;
-        card.cost=this.cost;
-        card.iconPoints=this.iconPoints;
-        card.id=this.id;
-        card.name=this.name;
-        card.tag=this.tag;
-        
-        
-        
-        
+    public Card copy() {
+        Card card = new Card();
+        card.action = this.action;
+        card.age = this.age;
+        card.civilMilitary = this.civilMilitary;
+        card.color = this.color;
+        card.cost = this.cost;
+        card.iconPoints = this.iconPoints;
+        card.id = this.id;
+        card.name = this.name;
+        card.tag = this.tag;
+
         return card;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -269,19 +276,19 @@ public class Card implements Serializable {
         return "Card{" + "id=" + id + ", name=" + name + ", age=" + age + ", civilMilitary=" + civilMilitary + ", tag=" + tag + ", action=" + action + ", iconPoints=" + iconPoints + ", cost=" + cost + ", color=" + color + ", cnt=" + cnt + ", tokenWhite=" + tokenWhite + ", tokenRed=" + tokenRed + ", tokenYellow=" + tokenYellow + ", tokenBlue=" + tokenBlue + '}';
     }
 
-    public String toString(int style){
-         String[] ageStr = {"A", "I", "II", "III","-"};
-       
-        switch(style){
+    public String toString(int style) {
+        String[] ageStr = {"A", "I", "II", "III", "-"};
+
+        switch (style) {
             case 1:// for CardNow
-                         StringBuilder sb = new StringBuilder();
-                    sb.append("[");
-                    sb.append(ageStr[age]);
-                    sb.append("");
-                    sb.append(name);
-                    sb.append("-");
-                    sb.append(tag);
-                    sb.append("] ");
+                StringBuilder sb = new StringBuilder();
+                sb.append("[");
+                sb.append(ageStr[age]);
+                sb.append("");
+                sb.append(name);
+                sb.append("-");
+                sb.append(tag);
+                sb.append("] ");
                 return sb.toString();
             default:
                 return toString();
